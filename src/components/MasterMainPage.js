@@ -7,14 +7,14 @@ import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import ClassList from './ClassList';
 import MasterProfile from './MasterProfile';
 import StudentsList from './StudentsList';
-
+import MasterPage from '../../src/MasterMainPage.css'; 
 class MasterMainPage extends Component{
     render(){
         const { Header, Content, Footer, Sider } = Layout;
         return(
           <ConfigProvider direction="rtl">
           <Router>
-            <Layout>
+            <Layout className={MasterPage.masterPage}>
               <Sider
                 breakpoint="lg"
                 collapsedWidth="0"
@@ -43,13 +43,13 @@ class MasterMainPage extends Component{
               <Layout>
                 <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
                 <Content style={{ margin: '24px 16px 0' }}>
-                  <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+                  <div className="site-layout-background" style={{ padding: 24, minHeight: window.innerHeight }}>
                     <Route exact path='/' component={ClassList} />
                     <Route path="/profile" component={MasterProfile} />
                     <Route path="/students" component={StudentsList} />
                   </div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>All right reserved by Golestan ©2020</Footer>
+                {/* <Footer style={{ textAlign: 'center' }}>All right reserved by Golestan ©2020</Footer> */}
               </Layout>
             </Layout>
           </Router>
