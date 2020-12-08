@@ -1,0 +1,74 @@
+[
+    {
+        "id":"3991-431-5342-01",
+        "name":"سیستم عامل",
+        "section":1,
+        "dates":[
+                    {
+                        "day":"شنبه",
+                        "start_hour" : "15:30",
+                        "end_hour" : "16:30"
+                    },
+                    {
+                        "day":"پنجشنبه",
+                        "start_hour" : "11:30",
+                        "end_hour" : "12:30"
+                    }
+                ],
+        "population":45
+    },
+    {
+        "id":"3991-431-5355-02",
+        "name":"مباحث ویژه",
+        "section":2,
+        "dates":[
+            {
+                "day":"سه شنبه",
+                "start_hour" : "9:30",
+                "end_hour" : "10:30"
+            },
+            {
+                "day":"پنجشنبه",
+                "start_hour" : "10:30",
+                "end_hour" : "11:30"
+            }
+        ],
+        "population":37
+    },
+    {
+        "id":"3991-431-5347-01",
+        "name":"پایگاه داده",
+        "section":1,
+        "dates":[
+            {
+                "day":"یکشنبه",
+                "start_hour" : "13:00",
+                "end_hour" : "14:00"
+            },
+            {
+                "day":"سه شنبه",
+                "start_hour" : "11:00",
+                "end_hour" : "12:00"
+            }
+        ],
+        "population":57
+    },
+    {
+        "id":"3991-431-5342-02",
+        "name":"سیستم عامل",
+        "section":2,
+        "dates":[
+            {
+                "day":"یکشنبه",
+                "start_hour" : "8:00",
+                "end_hour" : "9:00"
+            },
+            {
+                "day":"پنجشنبه",
+                "start_hour" : "7:30",
+                "end_hour" : "8:30"
+            }
+        ],
+        "population":23
+    }
+]
