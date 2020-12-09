@@ -1,42 +1,25 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
-import { UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 
-import { Link } from "react-router-dom";
+import TopHeader from './Header';
+import Sidebar from './Sidebar';
 
 import './style.css';
 
-const { Header, Content, Sider } = Layout;
+const { Content } = Layout;
 
 export default function Dashboard({ children }) {
+  const [siderCollapse, setSiderCollapse] = React.useState(false);
+
+  const toggleSiderCollapse = () => setSiderCollapse((prevState) => !prevState);
+
   return (
     <Layout style={{ height: '100%' }}>
-      <Sider
-        breakpoint="sm"
-        collapsedWidth="0"
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline">
-          <Menu.Item key="1" icon={<VideoCameraOutlined />}>
-            <Link to="semesters">ترم‌ها</Link>
-          </Menu.Item>
-
-          <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="courses">درس‌ها</Link>
-          </Menu.Item>
-
-          <Menu.Item key="3" icon={<UserOutlined />}>
-            <Link to="professors">اساتید</Link>
-          </Menu.Item>
-
-          <Menu.Item key="4" icon={<UserOutlined />}>
-            <Link to="students">دانشجویان</Link>
-          </Menu.Item>
-        </Menu>
-      </Sider>
+      <Sidebar collapse={siderCollapse} />
 
       <Layout>
-        <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
+        <TopHeader collapse={siderCollapse} toggleSider={toggleSiderCollapse} />
+
         <Content style={{ margin: '24px 16px 0' }}>
           <div className="site-layout-background" style={{ padding: 24 }}>
             {children}

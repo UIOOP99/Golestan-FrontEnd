@@ -1,17 +1,22 @@
-#components-layout-demo-responsive .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
+.sidebar__logo {
+    padding: 0.8rem 1.3rem;
 }
-  
-.site-layout-sub-header-background {
-    background: #fff;
+
+.sidebar__logo h1 {
+    color: #fff;
+    font-size: 1.1rem;
 }
-  
+
 .site-layout-background {
     background: #fff;
 }
 
-.ant-layout-sider-zero-width-trigger {
-    right: 0;
+.sidebar__trigger{
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.sidebar__trigger:hover {
+    color: #1890ff;
 }
