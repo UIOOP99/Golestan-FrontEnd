@@ -12,7 +12,13 @@ export default function StudentSelector({ studentsList = [], value = [], onChang
   const [students] = React.useState(studentsList);
   const [selectedStudents, setSelectedStudents] = React.useState(value);
 
-  const filterOption = (inputValue, option) => inputValue.includes(option.studentNumber);
+  const filterOption = (inputValue, option) => {
+    return (
+      String(option.studentNumber).includes(inputValue)
+      || option.firstName.includes(inputValue)
+      || option.lastName.includes(inputValue)
+    );
+  };
 
   const handleChange = targetKeys => {
     setSelectedStudents(targetKeys);
@@ -21,14 +27,19 @@ export default function StudentSelector({ studentsList = [], value = [], onChang
 
   return (
     <Transfer
+      titles={['کل', 'اخذ کرده']}
       rowKey={record => record.studentNumber}
       dataSource={students}
       filterOption={filterOption}
       targetKeys={selectedStudents}
       onChange={handleChange}
-      render={({ key, firstName, lastName }) => `${key} (${firstName} ${lastName})`}
+      render={({ key, firstName, lastName }) => (<span>{firstName} {lastName} - {key}</span>)}
       locale={locale}
       showSearch
+      listStyle={{
+        width: '100%',
+        height: 300,
+      }}
     />
   );
 }

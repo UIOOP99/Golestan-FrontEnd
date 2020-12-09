@@ -4,8 +4,8 @@ export default function itemsList({ items, onDelete }) {
   const columns = [
     {
       title: 'شماره شناسایی',
-      dataIndex: 'studentNumber',
-      key: 'studentNumber',
+      dataIndex: 'id',
+      key: 'id',
     },
     {
       title: 'نام',

@@ -7,22 +7,22 @@ import StudentsList from './components/List';
 
 const FAKE_STUDENTS = [
   {
-    studentNumber: 1,
+    studentNumber: '9725311',
     firstName: "امیرحسین",
     lastName: "قاسمی"
   },
   {
-    studentNumber: 2,
+    studentNumber: '9725312',
     firstName: "فرزانه",
     lastName: "محمدی"
   },
   {
-    studentNumber: 3,
+    studentNumber: '9725313',
     firstName: "مینا",
     lastName: "رضایی"
   },
   {
-    studentNumber: 4,
+    studentNumber: '9725314',
     firstName: "سجاد",
     lastName: "هاشمیان"
   },

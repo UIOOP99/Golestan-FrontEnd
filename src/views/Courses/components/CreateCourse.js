@@ -30,22 +30,22 @@ const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
 
   const students = [
     {
-      studentNumber: 1,
+      studentNumber: '9725311',
       firstName: "امیرحسین",
       lastName: "قاسمی"
     },
     {
-      studentNumber: 2,
+      studentNumber: '9725312',
       firstName: "فرزانه",
       lastName: "محمدی"
     },
     {
-      studentNumber: 3,
+      studentNumber: '9725313',
       firstName: "مینا",
       lastName: "رضایی"
     },
     {
-      studentNumber: 4,
+      studentNumber: '9725314',
       firstName: "سجاد",
       lastName: "هاشمیان"
     },
@@ -101,9 +101,9 @@ const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
           <Select
             placeholder="انتخاب استاد"
           >
-            {professors.map((professor, index) => {
+            {professors.map((professor) => {
               return (
-                <Select.Option value={professor.id}>{professor.firstName}</Select.Option>
+                <Select.Option value={professor.id} key={professor.id}>{professor.firstName}</Select.Option>
               );
             })}
           </Select>
@@ -122,9 +122,9 @@ const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
           <Select
             placeholder="انتخاب ترم"
           >
-            {semesters.map((semester, index) => {
+            {semesters.map((semester) => {
               return (
-                <Select.Option value={semester.id}>{semester.name}</Select.Option>
+                <Select.Option value={semester.id} key={semester.id}>{semester.name}</Select.Option>
               );
             })}
           </Select>
