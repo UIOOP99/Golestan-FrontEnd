@@ -1,0 +1,64 @@
+body{
+  background: #FFFFFF;
+}
+
+.main {
+  transition: transform .2s;
+  background-color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+ 
+  
+}
+
+.h1 {
+  padding-top: 40px;
+  color: #121113;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  font-style: italic;
+  font-variant: initial;
+  font-stretch: wider;
+  padding: 15px;
+}
+.b{
+  
+  padding-top: 40px;
+  color: #111011;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  font-style: italic;
+  font-variant: initial;
+  font-stretch: wider;
+ margin:7 auto;
+ text-align: center;
+  padding: 15px;
+  
+  }
+  
+  
+  .img {
+    padding: 50px;
+    transition: transform .2s;
+    width: 100px;
+    height: 100px;
+    margin: 0 ;
+  }
+  .img:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+  }
+  .main:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+  }
+ 
+  
+  
+
