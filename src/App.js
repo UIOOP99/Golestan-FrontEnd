@@ -47,7 +47,8 @@ const Demo = () => {
 
   const onFinishFailedusername = (errorInfo) => {
       alert('باید 10 عدد وارد کنید');
-  };
+      console.log("باید ده عدد وارد کنید");
+    };
  
   return (
 
@@ -67,11 +68,12 @@ const Demo = () => {
       <Form.Item
         label="نام کاربری"
         name="username"
-        pattern="^[0-9]{10}$"
+        
         rules={[
           {
             required: true,
-            message: 'لطفا نام کاربری را وارد کنید'
+            message: 'لطفا نام کاربری را به درستی  وارد کنید',
+            pattern:"^[0-9]{10}$"
           },
         ]}
         
@@ -84,11 +86,12 @@ const Demo = () => {
       <Form.Item
         label="کلمه عبور"
         name="password"
-        pattern="^[0-9]{10}$"
+        
         rules={[
           {
             required: true,
-            message: 'لطفا کلمه عبور را وارد کنید'
+            message: 'لطفا کلمه عبور را به درستی  وارد کنید',
+            pattern:"^[0-9]{10}$"
           },
         ]}
       >
