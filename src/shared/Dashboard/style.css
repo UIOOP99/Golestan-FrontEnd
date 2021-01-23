@@ -1,0 +1,22 @@
+.sidebar__logo {
+    padding: 0.8rem 1.3rem;
+}
+
+.sidebar__logo h1 {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.site-layout-background {
+    background: #fff;
+}
+
+.sidebar__trigger{
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.sidebar__trigger:hover {
+    color: #1890ff;
+}
