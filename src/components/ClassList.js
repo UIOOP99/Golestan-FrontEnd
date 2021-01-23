@@ -6,24 +6,33 @@ class ClassList extends Component{
     constructor(props){
         super(props);
         this.state={
-            testlist : []
+            class_list_arr : []
         }
     }
 
     componentDidMount(){
-        // this.setState({
-        //     testlist : JSON.parse(ClassTest)
-        // });
+
+        axios.get('').then(
+            response=>{
+
+                this.setState({
+                    class_list_arr : response.data
+                });
+
+            }
+        ).catch(
+            err=>{
+                console.log(err,"An Error Occured in data fetching (ClassList.js) <3")
+            }
+        );
        
     }
     
     render(){
-        // const classlist=;
+        
         return(
-            <>
-            <div>{this.state.testlist}</div>
-            <ClassTable />
-            </>
+
+            <ClassTable classListData={this.state.class_list_arr} />
         );
     }
 }
