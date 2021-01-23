@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ant.css';
 import './index.css';
-import { Form, Input, Button, Checkbox } from 'antd';
-
-
+import  {useState , useEffect} from 'react';
+import { Form, Input, Button, Checkbox, Result } from 'antd';
+import { render } from '@testing-library/react';
+import axios from 'axios';
+import AnchorLink from 'antd/lib/anchor/AnchorLink';
 const layout = {
   labelCol: {
     span: 4,
@@ -18,38 +20,42 @@ const tailLayout = {
     span: 16,
   },
 };
-
-const Demo = () => {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-  const onFinishusername = (values) => {
-    var stripSUID =values.substring(0,3);
-    if (!this.showFormErrors()) {
-    console.log('form is invalid: do not submit');
-    } else {
-    console.log('form is valid: submit');
-    if(stripSUID===111){
-    alert('ورود ادمین');
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      username:'',
+      password:'',
+      role:''
     }
-    else if(stripSUID===222){
-    alert('ورود اساتید');
+  }
+  handleRole(role){
+    if(role==="STUDENT")
+    //Link;
+   console.log("Student")
+    else if(role==="PROFESSOR")
+   // Link;
+   console.log("Professor")
+    else if( role==="ADMIN")
+    console.log("Admin")
+   // Link;
+  }
+  handleClick(event){
+  var apiBaseUrl="";
+  var payLoad={
+    "username":this.state.username,
+    "password":this.state.password
+  }
+  axios.post(apiBaseUrl+'login',payLoad);
+  axios.get('').then(
+    response=>{
+      this.setState({role:response.data})
     }
-    else {
-    alert('ورود دانشجویان');
-    }
-    }
-  };
-
-  const onFinishFailedusername = (errorInfo) => {
-      alert('باید 10 عدد وارد کنید');
-      console.log("باید ده عدد وارد کنید");
-    };
- 
+  );
+  this.handleRole(this.role);
+  }
+render(){
+  
   return (
 
     <div class="body">
@@ -62,38 +68,39 @@ const Demo = () => {
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+    
     >
       <Form.Item
         label="نام کاربری"
-        name="username"
+        name="username1"
         
         rules={[
           {
             required: true,
             message: 'لطفا نام کاربری را به درستی  وارد کنید',
-            pattern:"^[0-9]{10}$"
+            pattern:"^[0-9]{10}$",
+            //newvalue:{username},
           },
         ]}
+        onChange = {(event,newValue)=>this.setState({username:newValue})}
         
-      onFinish={onFinishusername}
-      onFinishFailed={onFinishFailedusername}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
         label="کلمه عبور"
-        name="password"
+        name="password1"
         
         rules={[
           {
             required: true,
             message: 'لطفا کلمه عبور را به درستی  وارد کنید',
-            pattern:"^[0-9]{10}$"
+            pattern:"^[0-9]{10}$",
+          //  value:{password},
           },
         ]}
+        onChange = {(event,newValue)=>this.setState({password:newValue})}
       >
         <Input.Password />
       </Form.Item>
@@ -103,7 +110,7 @@ const Demo = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onClick = {(event)=> this.handleClick(event)}>
           ورود
         </Button>
       </Form.Item>
@@ -111,7 +118,6 @@ const Demo = () => {
    </div>
     </div>
   );
-};
-
-
-export default Demo;
+      }
+    }
+export default App;
