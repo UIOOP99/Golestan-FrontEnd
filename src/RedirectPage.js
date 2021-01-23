@@ -1,7 +1,7 @@
 import { formatCountdown } from "antd/lib/statistic/utils";
 import React , { Component } from 'react';
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
-import MasterMainPage from "./components/MasterMainPage";
+import MasterMainPage from "./views/Masters/MasterMainPage";
 class Redirect extends Component{
 
     constructor(props){

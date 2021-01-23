@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import { Table, Tag, Space } from 'antd';
-import StudentsTest from '../fakeDatas/StudentsTest.json';
+import StudentsTest from '../../fakeDatas/StudentsTest.json';
 import EditScore from './EditScore';
 import StudentScore from './StudentScore';
 class StudentsList extends Component{

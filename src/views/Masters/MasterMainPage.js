@@ -7,7 +7,7 @@ import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import ClassList from './ClassList';
 import MasterProfile from './MasterProfile';
 import StudentsList from './StudentsList';
-import MasterPage from '../../src/MasterMainPage.css'; 
+import MasterPage from '../../../src/MasterMainPage.css'; 
 class MasterMainPage extends Component{
     render(){
         const { Header, Content, Footer, Sider } = Layout;

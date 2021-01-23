@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import { Table, Tag, Space } from 'antd';
-import ClassTest from '../fakeDatas/ClassTest.json';
+import ClassTest from '../../fakeDatas/ClassTest.json';
 import { Link } from "react-router-dom";
 class ClassTable extends Component{
 
