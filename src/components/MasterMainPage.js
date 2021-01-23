@@ -30,12 +30,12 @@ class MasterMainPage extends Component{
                   
                   
                     <Menu.Item key="1" icon={<VideoCameraOutlined />}>
-                      <Link to='/'>کلاس ها</Link>
+                      <Link to='/master/classList'>کلاس ها</Link>
                     </Menu.Item>
                   
       
                     <Menu.Item key="2" icon={<UserOutlined />}>
-                      <Link to='/profile'>پروفایل</Link>
+                      <Link to='/master/profile'>پروفایل</Link>
                     </Menu.Item>
                 
                 </Menu>
@@ -44,9 +44,9 @@ class MasterMainPage extends Component{
                 <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
                 <Content style={{ margin: '24px 16px 0' }}>
                   <div className="site-layout-background" style={{ padding: 24, minHeight: window.innerHeight }}>
-                    <Route exact path='/' component={ClassList} />
-                    <Route path="/profile" component={MasterProfile} />
-                    <Route path="/students" component={StudentsList} />
+                    <Route exact path='/master/classList' component={ClassList} />
+                    <Route path="/master/profile" component={MasterProfile} />
+                    <Route path="/master/studentList/319923" component={StudentsList} />
                   </div>
                 </Content>
                 {/* <Footer style={{ textAlign: 'center' }}>All right reserved by Golestan ©2020</Footer> */}

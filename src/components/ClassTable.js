@@ -6,11 +6,17 @@ class ClassTable extends Component{
 
     render(){
         const { Column, ColumnGroup } = Table;
-
+        let class_id=319923;
         return(
+
+
             <Table dataSource={ClassTest}>
             {/* <ColumnGroup title="اطلاعات درس" /> */}
-              <Column title="کد درس" dataIndex="id" key="id" />
+              <Column title="کد درس" dataIndex="id" key="id"  render={id => (
+                  <>
+                    {id}
+                  </>
+                )}/>
               <Column title="نام درس" dataIndex="name" key="name" />
               <Column title="شعبه" dataIndex="section" key="section" />
               <Column title="ظرفیت" dataIndex="population" key="population" />
@@ -30,13 +36,16 @@ class ClassTable extends Component{
               />
             <Column 
               key="action"
-              render={(text, record) => (
+              dataIndex="id"
+              render={(id) => (
                 <Space size="middle">
-                  <Link to="/students" >لیست دانشجویان</Link>
+                  <Link to={`/master/studentList/${id}`} >لیست دانشجویان</Link>
                 </Space>
               )}
             />
           </Table>
+
+          
         );
     }
 }
