@@ -52,7 +52,7 @@ export default function Students() {
   }
 
   function removeStudent(student) {
-    const index = students.findIndex(({ studentNumber }) => student.studentNumber === studentNumber);
+    const index = students.findIndex(({ userId }) => student.userId === userId);
     if (index === -1) {
       return;
     }
