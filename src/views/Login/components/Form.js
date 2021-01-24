@@ -1,20 +1,29 @@
 import { Form, Input, Button } from 'antd';
 
-function LoginForm() {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
+import { $Axios } from '../../../shared/services/api';
+import setAxiosAuthorizationHeader from '../../../shared/services/api/axios';
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+function LoginForm({ handleRedirect }) {
+  const handleLogin = async (values) => {
+    try {
+      const form = new FormData();
+      form.append('username', values.username);
+      form.append('password', values.password);
+
+      const { data } = await $Axios.post('/login', form);
+      
+      setAxiosAuthorizationHeader(data.token);
+      handleRedirect(data.role);
+    } catch (e) {
+      console.log('Error logging in!!', e);
+    }
   };
 
   return (
     <Form
       layout="vertical"
       initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      onFinish={handleLogin}
     >
       <Form.Item
         label="نام کاربری"

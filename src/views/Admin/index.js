@@ -13,11 +13,13 @@ import Students from './Students';
 import Semesters from './Semesters';
 import Professors from './Professors';
 
+import sidebarItems from './sidebarItems';
+
 function AdminMainLayout() {
   return (
     <ConfigProvider direction="rtl">
       <Router>
-        <Dashboard>
+        <Dashboard sidebarItems={sidebarItems}>
 
           <Switch>
             <Route path="/admin/courses">
