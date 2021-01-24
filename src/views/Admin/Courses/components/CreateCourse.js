@@ -1,55 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, Form, Input, Select } from 'antd';
 
 import StudentSelector from './StudentSelector';
+import { $Axios } from '../../../../shared/services/api';
 
-const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
+const CourseCreateForm = ({
+  visible,
+  onCreate,
+  onCancel,
+}) => {
   const [form] = Form.useForm();
 
-  const professors = [
-    {
-      id: 1,
-      firstName: 'رضا'
-    },
-    {
-      id: 2,
-      firstName: 'مریم'
-    },
-  ];
+  const [professors, setProfessors] = useState([]);
+  const [semesters, setSemesters] = useState([]);
+  const [students, setStudents] = useState([]);
 
-  const semesters = [
-    {
-      id: 1,
-      name: 'نیم‌سال اول'
-    },
-    {
-      id: 2,
-      name: 'نیم‌سال دوم'
-    },
-  ];
+  useEffect(() => {
+    getResources();
+  }, []);
 
-  const students = [
-    {
-      studentNumber: '9725311',
-      firstName: "امیرحسین",
-      lastName: "قاسمی"
-    },
-    {
-      studentNumber: '9725312',
-      firstName: "فرزانه",
-      lastName: "محمدی"
-    },
-    {
-      studentNumber: '9725313',
-      firstName: "مینا",
-      lastName: "رضایی"
-    },
-    {
-      studentNumber: '9725314',
-      firstName: "سجاد",
-      lastName: "هاشمیان"
-    },
-  ];
+  async function getResources() {
+    try {
+      const { data: allProfessors } = await $Axios.get('/get_allProfessors');
+      setProfessors(allProfessors);
+
+      const { data: allStudents } = await $Axios.get('/get_allStudents');
+      setStudents(allStudents);
+
+      const { data: allSemesters } = await $Axios.get('/semester_all');
+      setSemesters(allSemesters);
+    } catch (e) {
+      console.log('Error getting resources!', e);
+    }
+  }
 
   return (
     <Modal
@@ -89,7 +72,20 @@ const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
         </Form.Item>
 
         <Form.Item
-          name="professor"
+          name="units"
+          label="تعداد واحد"
+          rules={[
+            {
+              required: true,
+              message: 'تعداد واحد الزامی است.',
+            },
+          ]}
+        >
+          <Input type="number" />
+        </Form.Item>
+
+        <Form.Item
+          name="professorId"
           label="استاد"
           rules={[
             {
@@ -103,14 +99,16 @@ const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
           >
             {professors.map((professor) => {
               return (
-                <Select.Option value={professor.id} key={professor.id}>{professor.firstName}</Select.Option>
+                <Select.Option value={professor.userId} key={professor.userId}>
+                  {professor.firstName} {professor.lastName} ({professor.userId})
+                </Select.Option>
               );
             })}
           </Select>
         </Form.Item>
 
         <Form.Item
-          name="semester"
+          name="semesterId"
           label="ترم"
           rules={[
             {
@@ -131,7 +129,7 @@ const CourseCreateForm = ({ visible, onCreate, onCancel }) => {
         </Form.Item>
 
         <Form.Item
-          name="students"
+          name="studentsIds"
           label="دانشجویان"
         >
           <StudentSelector studentsList={students} />

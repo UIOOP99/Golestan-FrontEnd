@@ -1,50 +1,78 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ListHeader from '../../../shared/components/ListHeader';
+import { $Axios } from '../../../shared/services/api';
 
 import CreateCourseModal from './components/CreateCourse';
 import CoursesList from './components/List';
 
-const FAKE_COURSES = [
-  {
-    id: 1,
-    name: "طراحی شی‌گرای سیستم‌ها",
-    professor: 1,
-    semester: 1,
-    students: [1, 2, 3, 4]
-  },
-  {
-    id: 2,
-    name: "مبانی برنامه‌نویسی",
-    professor: 2,
-    semester: 1,
-    students: [4, 5, 6]
-  },
-];
-
 export default function Courses() {
-  const [courses, setCoures] = useState([...FAKE_COURSES]);
+  const [courses, setCoures] = useState([]);
 
-  function addCourse(course) {
-    console.log('---------->', course)
-    // TODO: REQUES?
+  useEffect(() => {
+    getCourses();
+  }, []);
 
-    setCoures((prevState) => [
-      ...prevState,
-      {
-        ...course,
-        id: '---'
-      }
-    ]);
+  async function getCourses() {
+    try {
+      const { data: allCourses } = await $Axios.get('/courses_all');
+      setCoures(allCourses);
+    } catch (e) {
+      console.log('Error getting courses!', e);
+    }
   }
 
-  function removeCourse(course) {
+  async function addCourse(course) {
+    try {
+      const { data: id } = await $Axios.post('/courses',
+        {
+          name: course.name,
+          professorId: course.professorId,
+          semesterId: course.semesterId,
+          studentsIds: course.studentsIds,
+          units: Number(course.units),
+          dates: [] // Todo: Add ability to set dates for course!
+        },
+        {
+          headers: {
+            'Authorization': localStorage.getItem('authToken')
+          }
+        });
+
+      setCoures((prevState) => [
+        ...prevState,
+        {
+          ...course,
+          id
+        }
+      ]);
+    } catch (e) {
+      console.log('Error adding course', e);
+    }
+  }
+
+  async function removeCourse(course) {
     const index = courses.findIndex(({ id }) => course.id === id);
     if (index === -1) {
       return;
     }
 
-    // TODO: REQUEST?
+    try {
+      await $Axios({
+        method: 'delete',
+        url: '/courses?id=' + course.id,
+        headers: {
+          'Authorization': localStorage.getItem('authToken')
+        }
+      });
+
+      const newCourses = [...courses];
+      newCourses.splice(index, 1);
+
+      setCoures(newCourses);
+    } catch (e) {
+      console.log('Error removing course', e);
+    }
 
     const newCourses = [...courses];
     newCourses.splice(index, 1);
