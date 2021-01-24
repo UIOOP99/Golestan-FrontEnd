@@ -19,19 +19,19 @@ export default function Sidebar({ collapse }) {
 
       <Menu theme="dark" mode="inline">
         <Menu.Item key="1" icon={<CalendarOutlined />}>
-          <Link to="semesters">ترم‌ها</Link>
+          <Link to="/admin/semesters">ترم‌ها</Link>
         </Menu.Item>
 
         <Menu.Item key="2" icon={<BookOutlined />}>
-          <Link to="courses">درس‌ها</Link>
+          <Link to="/admin/courses">درس‌ها</Link>
         </Menu.Item>
 
         <Menu.Item key="3" icon={<UserOutlined />}>
-          <Link to="professors">اساتید</Link>
+          <Link to="/admin/professors">اساتید</Link>
         </Menu.Item>
 
         <Menu.Item key="4" icon={<TeamOutlined />}>
-          <Link to="students">دانشجویان</Link>
+          <Link to="/admin/students">دانشجویان</Link>
         </Menu.Item>
       </Menu>
     </Sider>

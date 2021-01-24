@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import ListHeader from '../../shared/components/ListHeader';
+import ListHeader from '../../../shared/components/ListHeader';
 
 import CreateSemesterModal from './components/CreateSemester';
 import SemestersList from './components/List';

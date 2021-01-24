@@ -3,6 +3,7 @@ import React , { Component } from 'react';
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import { UserProvider } from "./shared/components/Context/UserContext";
 import MasterMainPage from "./views/Masters/MasterMainPage";
+import AdminMainLayout from "./views/Admin";
 class Redirect extends Component{
 
     constructor(props){
@@ -31,6 +32,7 @@ class Redirect extends Component{
         
         <UserProvider value={this.state.JWT_token}> 
             <Route path='/master' component={MasterMainPage} />
+            <Route path="/admin" component={AdminMainLayout} />
         </UserProvider>
 
         </Router>
