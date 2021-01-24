@@ -14,12 +14,14 @@ import StuExamSchedule from "./views/Student-Panel/StuExamSchedule";
 import StuWeeklySchedule from "./views/Student-Panel/StuWeeklySchedule";
 import StuReportCard from "./views/Student-Panel/StuReportCard";
 
+import sidebarItems from './views/Student-Panel/sidebarItems'
+
 function App() {
   return (
     <div className="App">
       <ConfigProvider direction="rtl">
         <BrowserRouter>
-          <Dashboard sidebarItems={[]}>
+          <Dashboard sidebarItems={sidebarItems}>
             <Switch>
               <Route exact path="/student/profile" component={StuProfile} />
               <Route exact path="/student/exam-schedule" component={StuExamSchedule} />
