@@ -4,8 +4,8 @@ export default function StudentsList({ items, onDelete }) {
   const columns = [
     {
       title: 'شماره دانشجویی',
-      dataIndex: 'studentNumber',
-      key: 'studentNumber',
+      dataIndex: 'userId',
+      key: 'userId',
     },
     {
       title: 'نام',
@@ -16,6 +16,16 @@ export default function StudentsList({ items, onDelete }) {
       title: 'نام خانوادگی',
       dataIndex: 'lastName',
       key: 'lastName',
+    },
+    {
+      title: 'نام کاربری',
+      dataIndex: 'username',
+      key: 'username',
+    },
+    {
+      title: 'ایمیل',
+      dataIndex: 'email',
+      key: 'email',
     },
     {
       title: 'عملیات',
