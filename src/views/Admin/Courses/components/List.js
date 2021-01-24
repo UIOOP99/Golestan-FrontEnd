@@ -13,20 +13,25 @@ export default function CoursesList({ items, onDelete }) {
       key: 'name',
     },
     {
-      title: 'ترم',
-      dataIndex: 'semester',
-      key: 'semester',
+      title: 'تعداد واحد',
+      dataIndex: 'units',
+      key: 'units',
     },
     {
-      title: 'استاد',
-      dataIndex: 'professor',
-      key: 'professor',
+      title: 'شماره ترم',
+      dataIndex: 'semesterId',
+      key: 'semesterId',
     },
     {
-      // TODO: Should render length
+      title: 'شماره استاد',
+      dataIndex: 'professorId',
+      key: 'professorId',
+    },
+    {
       title: 'تعداد دانشجویان',
-      dataIndex: 'students',
-      key: 'students',
+      dataIndex: 'studentsIds',
+      key: 'studentsIds',
+      render: (text, record) => (record.studentsIds || []).length,
     },
     {
       title: 'عملیات',

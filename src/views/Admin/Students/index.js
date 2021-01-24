@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ListHeader from '../../../shared/components/ListHeader';
 import { $Axios } from '../../../shared/services/api';
@@ -6,31 +6,21 @@ import { $Axios } from '../../../shared/services/api';
 import CreateStudentModal from './components/CreateStudent';
 import StudentsList from './components/List';
 
-const FAKE_STUDENTS = [
-  {
-    studentNumber: '9725311',
-    firstName: "امیرحسین",
-    lastName: "قاسمی"
-  },
-  {
-    studentNumber: '9725312',
-    firstName: "فرزانه",
-    lastName: "محمدی"
-  },
-  {
-    studentNumber: '9725313',
-    firstName: "مینا",
-    lastName: "رضایی"
-  },
-  {
-    studentNumber: '9725314',
-    firstName: "سجاد",
-    lastName: "هاشمیان"
-  },
-];
-
 export default function Students() {
-  const [students, setStudents] = useState([...FAKE_STUDENTS]);
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    getStudents()
+  }, []);
+
+  async function getStudents() {
+    try {
+      const { data } = await $Axios.get('/get_allStudents');
+      setStudents(data);
+    } catch (e) {
+      console.log('Error getting students', e);
+    }
+  }
 
   async function addStudent(student) {
     try {
@@ -62,7 +52,7 @@ export default function Students() {
   }
 
   function removeStudent(student) {
-    const index = students.findIndex(({ studentNumber }) => student.studentNumber === studentNumber);
+    const index = students.findIndex(({ userId }) => student.userId === userId);
     if (index === -1) {
       return;
     }

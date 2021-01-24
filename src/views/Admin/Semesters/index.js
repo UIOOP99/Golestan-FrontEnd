@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ListHeader from '../../../shared/components/ListHeader';
 
@@ -7,19 +7,22 @@ import SemestersList from './components/List';
 
 import { $Axios } from '../../../shared/services/api';
 
-const FAKE_SEMESTERS = [
-  {
-    id: 1,
-    name: "نیم‌سال اول ۹۹/۰۰",
-  },
-  {
-    id: 2,
-    name: "نیم‌سال دوم ۹۹/۰۰",
-  },
-];
-
 export default function Semesters() {
-  const [semesters, setSemesters] = useState([...FAKE_SEMESTERS]);
+  const [semesters, setSemesters] = useState([]);
+
+  useEffect(() => {
+    getSemesters()
+  }, []);
+
+  async function getSemesters() {
+    try {
+      const { data } = await $Axios.get('/semester_all');
+
+      setSemesters(data);
+    } catch (e) {
+      console.log('Error getting semesters', e);
+    }
+  }
 
   async function addSemester(semester) {
     try {
@@ -35,7 +38,7 @@ export default function Semesters() {
           'Authorization': localStorage.getItem('authToken')
         }
       });
-      
+
       setSemesters((prevState) => [
         ...prevState,
         {
@@ -48,18 +51,28 @@ export default function Semesters() {
     }
   }
 
-  function removeSemester(semester) {
+  async function removeSemester(semester) {
     const index = semesters.findIndex(({ id }) => semester.id === id);
     if (index === -1) {
       return;
     }
 
-    // TODO: REQUEST?
+    try {
+      await $Axios({
+        method: 'delete',
+        url: '/admin/delete_semester?id=' + semester.id,
+        headers: {
+          'Authorization': localStorage.getItem('authToken')
+        }
+      });
 
-    const newSemesters = [...semesters];
-    newSemesters.splice(index, 1);
+      const newSemesters = [...semesters];
+      newSemesters.splice(index, 1);
 
-    setSemesters(newSemesters);
+      setSemesters(newSemesters);
+    } catch (e) {
+      console.log('Error removing semester', e);
+    }
   }
 
   return (

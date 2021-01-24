@@ -28,12 +28,12 @@ export default function StudentSelector({ studentsList = [], value = [], onChang
   return (
     <Transfer
       titles={['کل', 'اخذ کرده']}
-      rowKey={record => record.studentNumber}
+      rowKey={record => record.userId}
       dataSource={students}
       filterOption={filterOption}
       targetKeys={selectedStudents}
       onChange={handleChange}
-      render={({ key, firstName, lastName }) => (<span>{firstName} {lastName} - {key}</span>)}
+      render={({ key, firstName, lastName }) => (<span>{firstName} {lastName} ({key})</span>)}
       locale={locale}
       showSearch
       listStyle={{
