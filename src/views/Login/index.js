@@ -1,8 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { ConfigProvider } from 'antd';
-
+import './index1.css';
 import LoginForm from './components/Form';
-
 const ROLE_ROUTES = {
   PROFESSOR: '/master',
   STUDENT: '/student',
@@ -18,9 +17,12 @@ function LoginPage() {
 
   return (
     <ConfigProvider direction="rtl">
-      <h1 style={{ textAlign: 'center' }}>سیستم جامع دانشگاهی گلستان</h1>
-      <div style={{ maxWidth: 300, margin: '0 auto' }}>
+        <div class="body">
+        <div class="img"><img src="https://www.uniref.ir/images/scientometrics/17.png" width="100px" height="100px" /></div>
+    <div class="main">
+    <p class="b"><span>سیستم جامع دانشگاهی گلستان</span></p>
         <LoginForm handleRedirect={redirectionBaseOnRole} />
+      </div>
       </div>
     </ConfigProvider>
   );

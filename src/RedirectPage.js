@@ -26,7 +26,7 @@ class Redirect extends Component {
         <div>
           <Link to='/master'> پنل استاد</Link>
         </div>
-
+        
         <div>
           <Link to='/student'>پنل دانشجو</Link>
         </div>
