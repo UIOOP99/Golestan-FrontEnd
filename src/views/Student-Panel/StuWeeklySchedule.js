@@ -46,7 +46,7 @@ export default class EditableTable extends React.Component {
 
   componentDidMount(){
 
-    axios.get('').then(
+    axios.get('http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/student-controller/getStudentCourseDates').then(
         response=>{
 
             this.setState({
