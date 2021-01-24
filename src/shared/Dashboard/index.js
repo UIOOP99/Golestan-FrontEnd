@@ -8,14 +8,14 @@ import './style.css';
 
 const { Content } = Layout;
 
-export default function Dashboard({ children }) {
+export default function Dashboard({ sidebarItems, children }) {
   const [siderCollapse, setSiderCollapse] = React.useState(false);
 
   const toggleSiderCollapse = () => setSiderCollapse((prevState) => !prevState);
 
   return (
     <Layout style={{ height: '100%' }}>
-      <Sidebar collapse={siderCollapse} />
+      <Sidebar collapse={siderCollapse} items={sidebarItems} />
 
       <Layout>
         <TopHeader collapse={siderCollapse} toggleSider={toggleSiderCollapse} />

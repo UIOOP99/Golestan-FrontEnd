@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <ConfigProvider direction="rtl">
         <BrowserRouter>
-          <Dashboard>
+          <Dashboard sidebarItems={[]}>
             <Switch>
               <Route exact path="/student/profile" component={StuProfile} />
               <Route exact path="/student/exam-schedule" component={StuExamSchedule} />
