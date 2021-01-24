@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Modal, Button, Space } from 'antd';
+import axios from 'axios';
 
 import EditScoreForm from './EditScoreForm';
+import { Header } from 'antd/lib/layout/layout';
 
 class EditScoreModal extends Component {
   state = { visible: false };
@@ -19,6 +21,26 @@ class EditScoreModal extends Component {
     });
   };
 
+  editScore = (score)=>{
+    const parameters = {
+      "id" : this.props.student_id,
+      "score" : score
+      };
+    const headers = {'Bearer' : "JWT_Token"};
+    const url = "";
+
+    axios.post(url,parameters,headers)
+    .then(response=>{
+
+        this.hideModal();
+      })
+      .catch(err=>{
+      console.log(err);
+      this.hideModal();
+    });
+    
+  }
+
   render() {
     return (
       <>
@@ -28,12 +50,12 @@ class EditScoreModal extends Component {
         <Modal
           title="ویرایش نمره"
           visible={this.state.visible}
-          onOk={this.hideModal}
+          onOk={this.editScore}
           onCancel={this.hideModal}
           okText="ثبت"
           cancelText="انصراف"
         >
-         <EditScoreForm />
+         <EditScoreForm student_id={this.props.student_id} />
         </Modal>
       </>
     );

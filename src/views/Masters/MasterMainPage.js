@@ -20,7 +20,7 @@ class MasterMainPage extends Component{
                   <div className="site-layout-background" style={{ padding: 24, minHeight: window.innerHeight }}>
                     <Route exact path='/master/classList' component={ClassList} />
                     <Route path="/master/profile" component={MasterProfile} />
-                    <Route path="/master/studentList" component={StudentsList} />
+                    <Route path="/master/studentList  " component={StudentsList} />
                   </div>
                 </Content>
               
@@ -32,54 +32,3 @@ class MasterMainPage extends Component{
 }
 
 export default MasterMainPage;
-
-
-
-
-
-
-
-
-
-//-----------------------------------------------------------------------------------------
-
-{/* <Layout className={MasterPage.masterPage}>
-              <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                onBreakpoint={broken => {
-                  console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                  console.log(collapsed, type);
-                }}
-              >
-                <div className="logo" />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-                  
-                  
-                    <Menu.Item key="1" icon={<VideoCameraOutlined />}>
-                      <Link to='/master/classList'>کلاس ها</Link>
-                    </Menu.Item>
-                  
-      
-                    <Menu.Item key="2" icon={<UserOutlined />}>
-                      <Link to='/master/profile'>پروفایل</Link>
-                    </Menu.Item>
-                
-                </Menu>
-              </Sider>
-              <Layout>
-                <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
-                <Content style={{ margin: '24px 16px 0' }}>
-                  <div className="site-layout-background" style={{ padding: 24, minHeight: window.innerHeight }}>
-                    <Route exact path='/master/classList' component={ClassList} />
-                    <Route path="/master/profile" component={MasterProfile} />
-                    <Route path="/master/studentList/319923" component={StudentsList} />
-                  </div>
-                </Content>
-                {/* <Footer style={{ textAlign: 'center' }}>All right reserved by Golestan ©2020</Footer> */}
-              
-              
-            //     </Layout>
-            // </Layout> */} 

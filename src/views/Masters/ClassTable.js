@@ -2,11 +2,36 @@ import React,{ Component } from 'react';
 import { Table, Tag, Space } from 'antd';
 import ClassTest from '../../fakeDatas/ClassTest.json';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 class ClassTable extends Component{
+
+  constructor(props){
+    super(props);
+    this.state={
+      JWT_token : '',
+      classList_data_array : []
+    }
+  }
+
+  componentDidMount(){
+    const url = "http://localhost:8000/api";
+    const config = {
+      headers: { Authorization: `Bearer ${this.state.JWT_token}` }
+      };
+    axios.get(url,config)
+    .then(response => {
+      this.setState({
+        classList_data_array : response.data,
+      });
+    })
+    .catch(err=>{
+      console.log(err);
+    });
+  }
 
     render(){
         const { Column, ColumnGroup } = Table;
-        let class_id=319923;
+        
         return(
 
 
