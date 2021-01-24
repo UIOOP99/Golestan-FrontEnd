@@ -5,6 +5,8 @@ import ListHeader from '../../../shared/components/ListHeader';
 import CreateSemesterModal from './components/CreateSemester';
 import SemestersList from './components/List';
 
+import { $Axios } from '../../../shared/services/api';
+
 const FAKE_SEMESTERS = [
   {
     id: 1,
@@ -19,16 +21,31 @@ const FAKE_SEMESTERS = [
 export default function Semesters() {
   const [semesters, setSemesters] = useState([...FAKE_SEMESTERS]);
 
-  function addSemester(semester) {
-    // TODO: REQUES?
+  async function addSemester(semester) {
+    try {
+      const formdata = new FormData();
+      formdata.append('name', semester.name);
 
-    setSemesters((prevState) => [
-      ...prevState,
-      {
-        ...semester,
-        id: '---'
-      }
-    ]);
+      const { data: id } = await $Axios({
+        method: 'put',
+        url: '/admin/add_semester',
+        data: formdata,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': localStorage.getItem('authToken')
+        }
+      });
+      
+      setSemesters((prevState) => [
+        ...prevState,
+        {
+          ...semester,
+          id
+        }
+      ]);
+    } catch (e) {
+      console.log('Error adding semester', e);
+    }
   }
 
   function removeSemester(semester) {
