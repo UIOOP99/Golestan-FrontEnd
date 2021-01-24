@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 export function setAxiosAuthorizationHeader(token) {
-  setInstanceHeader("Authorization", token && `Bearer ${token}`);
+  setInstanceHeader("Authorization", token);
 }
 
 function setInstanceHeader(key, value) {

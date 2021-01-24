@@ -12,6 +12,7 @@ function LoginForm({ handleRedirect }) {
 
       const { data } = await $Axios.post('/login', form);
       
+      localStorage.setItem('authToken', data.token);
       setAxiosAuthorizationHeader(data.token);
       handleRedirect(data.role);
     } catch (e) {

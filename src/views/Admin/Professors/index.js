@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import ListHeader from '../../../shared/components/ListHeader';
+import { $Axios } from '../../../shared/services/api';
 
 import CreateProfessorModal from './components/CreateProfessor';
 import ProfessorsList from './components/List';
@@ -21,16 +22,33 @@ const FAKE_PROFESSORS = [
 export default function Professors() {
   const [professors, setProfessors] = useState([...FAKE_PROFESSORS]);
 
-  function addProfessor(professor) {
-    // TODO: REQUES?
+  async function addProfessor(professor) {
+    try {
+      const { data: id } = await $Axios.post('/admin/add_user',
+        {
+          firstname: professor.firstName,
+          lastname: professor.lastName,
+          username: professor.username,
+          email: professor.email,
+          password: professor.password,
+          role: 'PROFESSOR',
+        },
+        {
+          headers: {
+            'Authorization': localStorage.getItem('authToken')
+          }
+        });
 
-    setProfessors((prevState) => [
-      ...prevState,
-      {
-        ...professor,
-        id: '---'
-      }
-    ]);
+        setProfessors((prevState) => [
+          ...prevState,
+          {
+            ...professor,
+            id
+          }
+        ]);
+    } catch (e) {
+      console.log('Error adding professor', e);
+    }
   }
 
   function removeProfessor(professor) {
