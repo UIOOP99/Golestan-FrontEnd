@@ -1,11 +1,7 @@
 import RedirectPage from '../src/RedirectPage'
 
 function App() {
-  return (
-    <div className="App">
-      <RedirectPage />
-    </div>
-  );
+  return <RedirectPage />;
 }
 
 export default App;
