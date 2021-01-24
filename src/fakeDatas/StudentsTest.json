@@ -1,0 +1,30 @@
+[
+    {
+        "id":"2",
+        "name":"علیرضا",
+        "lastname":"ابراهیمی",
+        "student_number":"996548721",
+        "score": 17
+    },
+    {
+        "id":"5",
+        "name":"محمد",
+        "lastname":"رستگار",
+        "student_number":"996548723",
+        "score": 13
+    },
+    {
+        "id":"7",
+        "name":"فرشاد",
+        "lastname":"رحیمی",
+        "student_number":"996548726",
+        "score": 19
+    },
+    {
+        "id":"13",
+        "name":"الهام",
+        "lastname":"توکلی",
+        "student_number":"996548741",
+        "score": 15
+    }
+]

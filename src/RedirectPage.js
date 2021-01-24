@@ -1,40 +1,46 @@
-// import { formatCountdown } from "antd/lib/statistic/utils";
-import React , { Component } from 'react';
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
-// import MasterMainPage from "./views/Masters/MasterMainPage";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { UserProvider } from "./shared/components/Context/UserContext";
+
+import MasterMainPage from "./views/Masters/MasterMainPage";
+import AdminMainLayout from "./views/Admin";
+import LoginPage from "./views/Login";
 import StudentMainPage from "./StudentMainPage";
-class Redirect extends Component{
 
-    constructor(props){
-        super(props);
-        this.state={
-
-        }
+class Redirect extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      JWT_token: '' //set JWT Token here
     }
+  }
 
-    render(){
+  render() {
+    return (
+      <Router>
 
-        return(
-        <Router>
-        
         <div>
-        <Link to='/admin'>پنل ادمین</Link>
+          <Link to='/admin'>پنل ادمین</Link>
         </div>
+
         <div>
-        <Link to='/master'> پنل استاد</Link>
+          <Link to='/master'> پنل استاد</Link>
         </div>
+
         <div>
-        <Link to='/student'>پنل دانشجو</Link>
+          <Link to='/student'>پنل دانشجو</Link>
         </div>
-        
-        {/* <Route path='/master' component={MasterMainPage} /> */}
-        <Route path='/student' component={StudentMainPage} />
 
-        </Router>
-        );
-        }
+        <UserProvider value={this.state.JWT_token}>
+          <Route path="/login" component={LoginPage} />
+          <Route path='/master' component={MasterMainPage} />
+          <Route path="/admin" component={AdminMainLayout} />
+          <Route path='/student' component={StudentMainPage} />
+        </UserProvider>
 
-
+      </Router>
+    );
+  }
 }
 
 export default Redirect;
