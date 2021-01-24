@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 
 import Dashboard from '../../shared/Dashboard';
@@ -22,6 +23,8 @@ function AdminMainLayout() {
         <Dashboard sidebarItems={sidebarItems}>
 
           <Switch>
+            <Redirect exact from="/admin" to="/admin/courses" />
+
             <Route path="/admin/courses">
               <Courses />
             </Route>
