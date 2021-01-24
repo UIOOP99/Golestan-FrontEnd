@@ -53,6 +53,45 @@ const StudentCreateForm = ({ visible, onCreate, onCancel }) => {
         >
           <Input />
         </Form.Item>
+
+        <Form.Item
+          name="username"
+          label="نام کاربری"
+          rules={[
+            {
+              required: true,
+              message: 'نام کاربری الزامی است.',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="email"
+          label="ایمیل"
+          rules={[
+            {
+              required: true,
+              message: 'ایمیل الزامی است.',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="password"
+          label="رمز عبور"
+          rules={[
+            {
+              required: true,
+              message: 'رمز عبور الزامی است.',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
       </Form>
     </Modal>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import ListHeader from '../../../shared/components/ListHeader';
+import { $Axios } from '../../../shared/services/api';
 
 import CreateStudentModal from './components/CreateStudent';
 import StudentsList from './components/List';
@@ -31,16 +32,33 @@ const FAKE_STUDENTS = [
 export default function Students() {
   const [students, setStudents] = useState([...FAKE_STUDENTS]);
 
-  function addStudent(student) {
-    // TODO: REQUES?
+  async function addStudent(student) {
+    try {
+      const { data: id } = await $Axios.post('/admin/add_user',
+        {
+          firstname: student.firstName,
+          lastname: student.lastName,
+          username: student.username,
+          email: student.email,
+          password: student.password,
+          role: 'STUDENT',
+        },
+        {
+          headers: {
+            'Authorization': localStorage.getItem('authToken')
+          }
+        });
 
-    setStudents((prevState) => [
-      ...prevState,
-      {
-        ...student,
-        studentNumber: '---'
-      }
-    ]);
+      setStudents((prevState) => [
+        ...prevState,
+        {
+          ...student,
+          studentNumber: id
+        }
+      ]);
+    } catch (e) {
+      console.log('Error adding student', e);
+    }
   }
 
   function removeStudent(student) {
