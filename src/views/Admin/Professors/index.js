@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ListHeader from '../../../shared/components/ListHeader';
 import { $Axios } from '../../../shared/services/api';
@@ -6,21 +6,21 @@ import { $Axios } from '../../../shared/services/api';
 import CreateProfessorModal from './components/CreateProfessor';
 import ProfessorsList from './components/List';
 
-const FAKE_PROFESSORS = [
-  {
-    id: 1,
-    firstName: "رضا",
-    lastName: "رضایی"
-  },
-  {
-    id: 2,
-    firstName: "مریم",
-    lastName: "مریمی"
-  },
-];
-
 export default function Professors() {
-  const [professors, setProfessors] = useState([...FAKE_PROFESSORS]);
+  const [professors, setProfessors] = useState([]);
+
+  useEffect(() => {
+    getProfessors()
+  }, []);
+
+  async function getProfessors() {
+    try {
+      const { data } = await $Axios.get('/get_allProfessors');
+      setProfessors(data);
+    } catch (e) {
+      console.log('Error getting professors', e);
+    }
+  }
 
   async function addProfessor(professor) {
     try {
@@ -39,13 +39,13 @@ export default function Professors() {
           }
         });
 
-        setProfessors((prevState) => [
-          ...prevState,
-          {
-            ...professor,
-            id
-          }
-        ]);
+      setProfessors((prevState) => [
+        ...prevState,
+        {
+          ...professor,
+          id
+        }
+      ]);
     } catch (e) {
       console.log('Error adding professor', e);
     }
