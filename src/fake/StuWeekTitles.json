@@ -1,0 +1,28 @@
+ [
+    {
+      "title": "روز/ساعت",
+      "dataIndex": "name",
+      "width": "30%",
+      "editable": true
+    },
+    {
+      "title": "8-10",
+      "dataIndex": "h1"
+    },
+    {
+      "title": "10-12",
+      "dataIndex": "h2"
+    },
+    {
+      "title": "12-2",
+      "dataIndex": "h3"
+    },
+    {
+      "title": "2-4",
+      "dataIndex": "h4"
+    },
+    {
+      "title": "4-6",
+      "dataIndex": "h5"
+    }
+  ]

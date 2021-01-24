@@ -1,0 +1,8 @@
+
+[
+    { "title": "ردیف", "dataIndex": "radif", "key": "radif" },
+    { "title": "ترم", "dataIndex": "term", "key": "term" },
+    { "title": "وضعیت", "dataIndex": "status", "key": "status" },
+    { "title": "تعداد واحد", "dataIndex": "unit", "key": "unit" },
+    { "title": "معدل", "dataIndex": "average", "key": "average" }
+  ]
