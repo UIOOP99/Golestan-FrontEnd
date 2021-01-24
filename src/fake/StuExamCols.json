@@ -1,0 +1,21 @@
+
+    [
+        {
+          "title": "نام درس",
+          "dataIndex": "name",
+          "width": "30%",
+          "editable": true
+        },
+        {
+          "title": "تاریخ امتحان",
+          "dataIndex": "date"
+        },
+        {
+          "title": "روز امتحان",
+          "dataIndex": "day"
+        },
+        {
+          "title": "ساعت امتحان",
+          "dataIndex": "hour"
+        }
+      ]

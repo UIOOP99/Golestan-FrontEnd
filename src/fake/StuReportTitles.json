@@ -1,0 +1,15 @@
+[
+    { "title": "ردیف", "dataIndex": "innerradif", "key": "innerradif" },
+    { "title": "نام درس", "dataIndex": "name", "key": "name" },
+    {
+      "title": "تعداد واحد درس",
+      "dataIndex": "innerUnit",
+      "key": "innerUnit"
+ 
+    },
+    {
+      "title": "نمره",
+      "key": "grade"
+   
+    }
+  ]

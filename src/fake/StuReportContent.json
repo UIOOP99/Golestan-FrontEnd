@@ -1,0 +1,19 @@
+
+
+[
+    {
+      "innerradif": "1",
+      "name": "ریاضی",
+      "innerUnit": "3"
+    },
+    {
+      "innerradif": "2",
+      "name": "آزمایشگاه",
+      "innerUnit": "1"
+    },
+    {
+      "innerradif": "3",
+      "name": "اندیشه",
+      "innerUnit": "2"
+    }
+  ]

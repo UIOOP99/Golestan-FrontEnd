@@ -5,6 +5,7 @@ import { UserProvider } from "./shared/components/Context/UserContext";
 import MasterMainPage from "./views/Masters/MasterMainPage";
 import AdminMainLayout from "./views/Admin";
 import LoginPage from "./views/Login";
+import StudentMainPage from "./StudentMainPage";
 
 class Redirect extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class Redirect extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path='/master' component={MasterMainPage} />
           <Route path="/admin" component={AdminMainLayout} />
+          <Route path='/student' component={StudentMainPage} />
         </UserProvider>
 
       </Router>
