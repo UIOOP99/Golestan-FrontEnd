@@ -1,5 +1,3 @@
-import './App.css';
-
 import RedirectPage from '../src/RedirectPage'
 
 function App() {
