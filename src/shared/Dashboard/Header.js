@@ -21,7 +21,7 @@ export default function TopHeader({ collapse, toggleSider }) {
         </Col>
 
         <Col>
-          <Button>خروج</Button>
+          <Button onClick={()=>{window.location="/login";}}>خروج</Button>
         </Col>
       </Row>
     </Header>

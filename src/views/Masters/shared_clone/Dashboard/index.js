@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import TopHeader from './Header';
+import TopHeader from '../../../../shared/Dashboard/Header.js';
 import Sidebar from './Sidebar';
 
 import './style.css';

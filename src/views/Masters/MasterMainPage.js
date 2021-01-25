@@ -18,9 +18,11 @@ class MasterMainPage extends Component{
 
                 <Content style={{ margin: '24px 16px 0' }}>
                   <div className="site-layout-background" style={{ padding: 24, minHeight: window.innerHeight }}>
+                  <Switch>
                     <Route exact path='/master/classList' component={ClassList} />
                     <Route path="/master/profile" component={MasterProfile} />
-                    <Route path="/master/studentList  " component={StudentsList} />
+                    <Route path="/master/studentList" component={StudentsList} />
+                  </Switch>
                   </div>
                 </Content>
               

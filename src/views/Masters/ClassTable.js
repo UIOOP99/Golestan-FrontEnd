@@ -2,7 +2,9 @@ import React,{ Component } from 'react';
 import { Table, Tag, Space } from 'antd';
 import ClassTest from '../../fakeDatas/ClassTest.json';
 import { Link } from "react-router-dom";
+import StudentsList from './StudentsList';
 import axios from 'axios';
+import { $Axios } from '../../shared/services/api';
 class ClassTable extends Component{
 
   constructor(props){
@@ -14,19 +16,27 @@ class ClassTable extends Component{
   }
 
   componentDidMount(){
-    const url = "http://localhost:8000/api";
-    const config = {
-      headers: { Authorization: `Bearer ${this.state.JWT_token}` }
-      };
-    axios.get(url,config)
+    
+    const url = "/professor/get_courses";
+     
+    $Axios.get(url,
+      {
+        headers : {'Authorization': localStorage.getItem('authToken')}
+      })
     .then(response => {
-      this.setState({
-        classList_data_array : response.data,
-      });
+      
+      this.setState(
+        {
+          classList_data_array : response.data
+        });
+
+      console.log(response.data);
+
     })
     .catch(err=>{
       console.log(err);
     });
+
   }
 
     render(){
@@ -35,16 +45,18 @@ class ClassTable extends Component{
         return(
 
 
-            <Table dataSource={ClassTest}>
+            <Table dataSource={this.state.classList_data_array}>
             {/* <ColumnGroup title="اطلاعات درس" /> */}
               <Column title="کد درس" dataIndex="id" key="id"  render={id => (
                   <>
                     {id}
                   </>
                 )}/>
-              <Column title="نام درس" dataIndex="name" key="name" />
-              <Column title="شعبه" dataIndex="section" key="section" />
-              <Column title="ظرفیت" dataIndex="population" key="population" />
+              <Column title="نام درس" dataIndex="name" key="name" render={(a,record)=>{
+                console.log(a,"!@@!@!@!@@ ",record);
+              }} />
+              <Column title="واحد" dataIndex="units" key="units" />
+              <Column title="ظرفیت" dataIndex=""  />
               <Column
                 title="زمان کلاس"
                 dataIndex="dates"
@@ -53,7 +65,7 @@ class ClassTable extends Component{
                   <>
                     {dates.map(date => (
                       <Tag color="blue" key={date}>
-                        {date.day} ({date.end_hour}-{date.start_hour})
+                        {date.day} ({date.start}-{date.end})
                       </Tag>
                     ))}
                   </>
@@ -62,9 +74,9 @@ class ClassTable extends Component{
             <Column 
               key="action"
               dataIndex="id"
-              render={(id) => (
+              render={(id,record) => (
                 <Space size="middle">
-                  <Link to={`/master/studentList/${id}`} >لیست دانشجویان</Link>
+                  <Link to={`/master/studentList?course_id=${id}` } >لیست دانشجویان</Link>
                 </Space>
               )}
             />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Modal, Button, Space } from 'antd';
 import axios from 'axios';
-
+import { $Axios } from '../../shared/services/api';
 import EditScoreForm from './EditScoreForm';
 import { Header } from 'antd/lib/layout/layout';
 
@@ -22,19 +22,29 @@ class EditScoreModal extends Component {
   };
 
   editScore = (score)=>{
-    const parameters = {
-      "id" : this.props.student_id,
-      "score" : score
-      };
-    const headers = {'Bearer' : "JWT_Token"};
-    const url = "";
-
-    axios.post(url,parameters,headers)
-    .then(response=>{
-
-        this.hideModal();
+    
+    const url = "/professor/";
+    
+    $Axios.post(url,
+      {
+        studentId  : this.props.student_id,
+        courseId  : this.props.course_id,
+        score : score
+      },
+      {
+        headers : {'Authorization': localStorage.getItem('authToken')}
       })
-      .catch(err=>{
+    .then(response => {
+      
+    //   this.setState(
+    //     {
+    //       classList_data_array : response.data
+    //     });
+
+      console.log(response.data);
+      this.hideModal();
+    })
+    .catch(err=>{
       console.log(err);
       this.hideModal();
     });
