@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "../../../index.css";
 
 import axios from 'axios';
 
-import  StuWeekTitles from '../../fake/StuWeekTitles.json'
-import StuWeekdataSource from '../../fake/StuWeekdataSource.json'
-import {$Axios} from '../../shared/services/api'
+import StuExamCols from '../../../fake/StuExamCols.json'
+import StuExamData from '../../../fake/StuExamData.json'
 
 import "antd/dist/antd.css";
 import { Table, Form } from "antd";
@@ -26,61 +26,64 @@ const EditableRow = ({ index, ...props }) => {
 
 const EditableCell = ({
   title,
+  editable,
   children,
+  dataIndex,
+  record,
 
   ...restProps
 }) => {
-
   let childNode = children;
-
   return <td {...restProps}>{childNode}</td>;
 };
 
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.columns = [{ StuWeekTitles}]
-    this.state = {
-      dataSource: [{StuWeekdataSource}]
-    };
+
+    this.columns = [{StuExamCols}]
+    this.state = {dataSource: [{StuExamData}]};
   }
 
- componentDidMount() {
-   $Axios
-      .get(
-        "http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/student-controller/getStudentCourseDates"
-      )
-      .then((response) => {
-        this.setState({
-          dataSource: response.data,
-          columns: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err, "An Error in data fetching (StuWeeklySchedule.js)");
-      });
-  }
+  componentDidMount(){
+
+    axios.get('').then(
+        response=>{
+
+            this.setState({
+              dataSource : response.data
+            });
+
+        }
+    ).catch(
+        err=>{
+            console.log(err,"An Error Occured in data fetching (StuExamSchedule.js) <3")
+        }
+    );
+   
+}
 
   render() {
+    const { dataSource } = this.state;
     const components = {
       body: {
         row: EditableRow,
         cell: EditableCell,
       },
     };
-
+    
     return (
       <div>
-        <h1> برنامه هفتگی دانشجو</h1>
+        <h1>برنامه امتحانات دانشجو</h1>
         <Table
           components={components}
           bordered
-          dataSource={StuWeekdataSource}
-          columns={StuWeekTitles}
+          dataSource={StuExamData}
+          columns={StuExamCols}
         />
       </div>
     );
   }
 }
 
-ReactDOM.render(<EditableCell />, document.getElementById("root"));
+ReactDOM.render(<EditableTable />, document.getElementById("root"));

@@ -5,7 +5,7 @@ import { UserProvider } from "./shared/components/Context/UserContext";
 import MasterMainPage from "./views/Masters/MasterMainPage";
 import AdminMainLayout from "./views/Admin";
 import LoginPage from "./views/Login";
-import StudentMainPage from "./StudentMainPage";
+import StudentMainPage from "./views/Students";
 
 class RedirectPage extends Component {
   constructor(props) {
