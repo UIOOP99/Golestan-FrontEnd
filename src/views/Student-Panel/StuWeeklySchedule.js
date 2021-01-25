@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import  StuWeekTitles from '../../fake/StuWeekTitles.json'
 import StuWeekdataSource from '../../fake/StuWeekdataSource.json'
+import {$Axios} from '../../shared/services/api'
 
 import "antd/dist/antd.css";
 import { Table, Form } from "antd";
@@ -44,23 +45,21 @@ export default class EditableTable extends React.Component {
     };
   }
 
-  componentDidMount(){
-
-    axios.get('http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/student-controller/getStudentCourseDates').then(
-        response=>{
-
-            this.setState({
-              dataSource : response.data
-            });
-
-        }
-    ).catch(
-        err=>{
-            console.log(err,"An Error Occured in data fetching (StuWeeklySchedule.js) <3")
-        }
-    );
-   
-}
+ componentDidMount() {
+   $Axios
+      .get(
+        "http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/student-controller/getStudentCourseDates"
+      )
+      .then((response) => {
+        this.setState({
+          dataSource: response.data,
+          columns: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err, "An Error in data fetching (StuWeeklySchedule.js)");
+      });
+  }
 
   render() {
     const components = {
