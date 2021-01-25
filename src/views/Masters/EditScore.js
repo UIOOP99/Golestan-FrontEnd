@@ -6,7 +6,7 @@ class EditScore extends Component{
     render(){
         
         return (
-            <EditScoreModal  student_id={this.props.student_id} />
+            <EditScoreModal  student_id={this.props.student_id} course_id={this.props.course_id} />
         );
     }
 }
