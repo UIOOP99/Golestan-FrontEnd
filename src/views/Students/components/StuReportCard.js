@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../../index.css";
+import "../../../index.css";
 
-import StuReportTitles from '../../fake/StuReportTitles.json'
-import StuReportContent from '../../fake/StuReportContent'
-import StuReportInner from '../../fake/StuReportInner.json'
-import StuReportCols from '../../fake/StuReportCols.json'
+import StuReportTitles from '../../../fake/StuReportTitles.json'
+import StuReportContent from '../../../fake/StuReportContent'
+import StuReportInner from '../../../fake/StuReportInner.json'
+import StuReportCols from '../../../fake/StuReportCols.json'
 
 import "antd/dist/antd.css";
 import { Table, Badge } from "antd";
