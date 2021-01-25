@@ -56,7 +56,7 @@ class StudentsList extends Component{
               <Column title="نام خانوادگی" dataIndex="last_name" key="lastname" />
               <Column title="نام کاربری " dataIndex="username" key="student_number" />
               <StudentScore edit_modes={true} title="نمره" dataIndex="score" key="score" />
-            {/* <Column 
+            <Column 
             key="action" dataIndex="id"
             render={(id,record) => (
                 <Space size="middle">
@@ -64,7 +64,7 @@ class StudentsList extends Component{
                 </Space>
             )
           }
-            /> */}
+            />
           </Table>
         );
     }

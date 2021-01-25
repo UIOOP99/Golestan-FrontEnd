@@ -11,6 +11,7 @@ class MasterProfile extends Component{
       id : 0,
       username : '',
       firstName : '',
+      lastname  : '',
       email : '',
       role : ''
     }
@@ -30,6 +31,7 @@ class MasterProfile extends Component{
           id : response.userId,
           username   :  response.data.username,
           firstName  :  response.data.firstName,
+          lastname   :  response.data.lastName,
           email      :  response.data.email,
           role       :  response.data.role
         });
@@ -46,7 +48,7 @@ class MasterProfile extends Component{
             <div className="site-card-border-less-wrapper">
             <Card title="مشخصات استاد" bordered={false} style={{ width: 300 }}>
               
-              <p>{this.state.firstName}</p>
+              <p>{this.state.firstName} {this.state.lastname}</p>
               <div>
               <span>نام کاربری</span> : <span>{this.state.username}</span>
               </div>

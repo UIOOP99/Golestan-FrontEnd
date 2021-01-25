@@ -23,29 +23,30 @@ class EditScoreModal extends Component {
 
   editScore = (score)=>{
     
-    const body = JSON.stringify({
-        studentId  : this.props.student_id,
-        courseId  : this.props.course_id,
-        score : score
-       }
-    );
+    // const body = JSON.stringify({
+    //     studentId  : this.props.student_id,
+    //     courseId  : this.props.course_id,
+    //     score : score
+    //    }
+    // );
 
-    const url = "/professor/";
-    console.log("1111111111",this.props.student_id,this.props.course_id);
-    $Axios.post(url,
-      body,
-      {
-        headers : {'Authorization': localStorage.getItem('authToken')}
-      })
-    .then(response => {
+    // const url = "/professor/";
+    // console.log("1111111111",this.props.student_id,this.props.course_id);
+    // $Axios.post(url,
+    //   body,
+    //   {
+    //     headers : {'Authorization': localStorage.getItem('authToken')}
+    //   })
+    // .then(response => {
       
-      console.log(response.data);
-      this.hideModal();
-    })
-    .catch(err=>{
-      console.log(err);
-      this.hideModal();
-    });
+    //   console.log(response.data);
+    //   this.hideModal();
+    // })
+    // .catch(err=>{
+    //   console.log(err);
+     
+    // });
+    this.hideModal();
     
   }
 
