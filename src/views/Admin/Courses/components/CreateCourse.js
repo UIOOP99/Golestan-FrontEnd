@@ -37,6 +37,7 @@ const CourseCreateForm = ({
   return (
     <Modal
       visible={visible}
+      width={600}
       title="اضافه‌کردن درس جدید"
       okText="اضافه‌کردن"
       cancelText="انصراف"

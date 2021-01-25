@@ -24,7 +24,7 @@ export default function Students() {
 
   async function addStudent(student) {
     try {
-      const { data: id } = await $Axios.post('/admin/add_user',
+      const { data: userId } = await $Axios.post('/admin/add_user',
         {
           firstname: student.firstName,
           lastname: student.lastName,
@@ -43,7 +43,7 @@ export default function Students() {
         ...prevState,
         {
           ...student,
-          studentNumber: id
+          studentNumber: userId
         }
       ]);
     } catch (e) {

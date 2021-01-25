@@ -24,7 +24,7 @@ export default function Courses() {
 
   async function addCourse(course) {
     try {
-      const { data: id } = await $Axios.post('/courses',
+      const { data } = await $Axios.post('/courses',
         {
           name: course.name,
           professorId: course.professorId,
@@ -43,7 +43,7 @@ export default function Courses() {
         ...prevState,
         {
           ...course,
-          id
+          id: data.id
         }
       ]);
     } catch (e) {

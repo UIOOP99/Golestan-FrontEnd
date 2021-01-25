@@ -24,7 +24,7 @@ export default function Professors() {
 
   async function addProfessor(professor) {
     try {
-      const { data: id } = await $Axios.post('/admin/add_user',
+      const { data: userId } = await $Axios.post('/admin/add_user',
         {
           firstname: professor.firstName,
           lastname: professor.lastName,
@@ -43,7 +43,7 @@ export default function Professors() {
         ...prevState,
         {
           ...professor,
-          id
+          id: userId
         }
       ]);
     } catch (e) {
