@@ -1,10 +1,8 @@
 import React,{ Component } from 'react';
 import { Table, Tag, Space } from 'antd';
-import ClassTest from '../../fakeDatas/ClassTest.json';
 import { Link } from "react-router-dom";
-import StudentsList from './StudentsList';
-import axios from 'axios';
 import { $Axios } from '../../shared/services/api';
+
 class ClassTable extends Component{
 
   constructor(props){
@@ -52,11 +50,9 @@ class ClassTable extends Component{
                     {id}
                   </>
                 )}/>
-              <Column title="نام درس" dataIndex="name" key="name" render={(a,record)=>{
-                console.log(a,"!@@!@!@!@@ ",record);
-              }} />
+              <Column title="نام درس" dataIndex="name" key="name" />
               <Column title="واحد" dataIndex="units" key="units" />
-              <Column title="ظرفیت" dataIndex=""  />
+              <Column title="ظرفیت" dataIndex="population"  />
               <Column
                 title="زمان کلاس"
                 dataIndex="dates"
